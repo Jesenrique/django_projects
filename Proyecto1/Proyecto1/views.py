@@ -2,6 +2,7 @@ from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
 from django.template import loader
+from django.shortcuts import render
 
 # crear primera vista
 # cada funcion es una vista, donde se devuelve el texto
@@ -44,7 +45,7 @@ def get_time(request):
 def get_time(request):
     time=datetime.datetime.now()
 
-    # metodo usado sin usar el loader 
+    # 2. metodo usado sin usar el loader 
     '''
     Este forma de cargar el template no se suele usar por el consumo de recursos,
     en este caso este el codigo:
@@ -61,7 +62,7 @@ def get_time(request):
     response=plt.render(ctx)
     '''
 
-    # Usando el metodo LOADER
+    # 3.Usando el metodo LOADER
     '''
     1. importar loader
     2. en el script settings.py en "DIRS":configurar el path donde se encuentran los 
@@ -69,12 +70,25 @@ def get_time(request):
     3. obtener el documento usando get_template()
     4. el contexto sera un diccionario simple, ya no se instacia Context esto para
         que no ocurran problemas cuando se renderice.
-    '''
+    
     doc=loader.get_template("first_template.html")
     ctx={"actual_time":time}
     response=doc.render(ctx)
+    '''
 
-    return HttpResponse(response)
+    # 4. usando Django.shortscuts
+    '''
+    Se cuenta con una opcion mas facil de render, con django.shorcuts donde solo
+    se necesita una sola linea, creando una instancia de render ya se ejecuta
+    un http response, los argumentos van en la llamada al metodo: 
+    '''
+    ctx={"actual_time":time}
+    return render(request,"first_template.html",ctx)
+
+    # usarser con el metodo 2 y 3
+    #return HttpResponse(response)
+    
+
 
 
 # tercera vista operaciones con variables enviados en el path
