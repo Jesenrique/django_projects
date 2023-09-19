@@ -83,12 +83,17 @@ def get_time(request):
     un http response, los argumentos van en la llamada al metodo: 
     '''
     ctx={"actual_time":time}
-    return render(request,"first_template.html",ctx)
+    return render(request,"template.html",ctx)
 
     # usarser con el metodo 2 y 3
     #return HttpResponse(response)
-    
+'''
+def bar_nav(request):
+    return render(request,"template_2.html")
+'''
 
+def images(request):
+    return render(request, "secctions/images.html")
 
 
 # tercera vista operaciones con variables enviados en el path

@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    {% include "bar_up.html" %}
+    <style>
+        h1 {
+            color: blue;
+            font-family: Arial;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    
+    {% block relleno %}
+    <h2>Bienvenido!</h2>
+    <h1>
+        <p>La hora actual es: {{actual_time}}</p>
+    </h1>
+    {% endblock %}
+
+    {% include "footer.html" %}   
+</body>
+   
+</html>
