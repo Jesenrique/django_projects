@@ -53,6 +53,9 @@
     <form action="/contacto/" method="post">{% csrf_token %}
       <label for="name">Nombre:</label>
       <input type="text" id="name" name="name" placeholder="Tu nombre.." required>
+
+      <label for="name">Asunto:</label>
+      <input type="text" id="asunto" name="asunto" placeholder="Asunto del email..." required>
       
       <label for="email">Email:</label>
       <input type="text" id="email" name="email" placeholder="Tu email.." required>
