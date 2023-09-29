@@ -20,7 +20,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('proyectoWebApp.urls'))
+    path('',include('proyectoWebApp.urls')),
+    path('services/',include('servicesApp.urls')),
+    path('blog/',include('blogApp.urls')),
+    path('contact/',include('contactoApp.urls')),
+    path('store/',include('storeApp.urls')),
+    path('car/',include('carApp.urls')),
 ]
 
 # se agrega a url patterns la url de los archivos estaticos

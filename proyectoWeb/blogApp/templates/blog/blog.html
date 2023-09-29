@@ -1,0 +1,52 @@
+{% extends "proyectoWebApp/base.html" %}
+
+
+{% load static %}
+
+{% block content %}
+
+<div style="background-color: #015c18; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); text-align: center;">
+  <h2 style="color: #fff;">Enlaces</h2>
+  <p style="color: #fff;">Aquí tienes algunos enlaces interesantes:</p>
+  <div style="display: flex; justify-content: center;">
+      {% for post in posts %}
+          {% for categoria in post.categories.all %}
+              <a href="{% url 'blog_categorie' categoria.id %}" class="enlace" target="_blank" style="text-decoration: none; color: #fff; font-weight: bold; padding: 5px 10px; margin: 0 10px; border-radius: 5px;">
+                  {{ categoria.name }}
+              </a>
+          {% endfor %}
+      {% endfor %}
+  </div>
+</div>
+<style>
+  .enlace:hover {
+      background-color: #3498db; /* Cambia el color de fondo al pasar el cursor */
+  }
+</style>
+
+  
+    {% for post in posts %}
+    <section class="page-section cta">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-9 mx-auto">
+              <div class="cta-inner text-center rounded">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-lower">{{post.title}}</span>
+                  <span class="section-heading-upper">Creado el: {{post.created}}</span>
+                  <span class="section-heading-upper">Escrito por: {{post.autor}}</span>
+                  <span class="section-heading-upper">categoria:
+                    {% for categoria in post.categories.all %}
+                    <a href="{% url 'blog_categorie' categoria.id %}"> {{categoria.name}}</a>  
+                    {% endfor %}
+                  </span>
+                </h2>
+                <p class="mb-0">{{post.content}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endfor %}
+
+{% endblock %}

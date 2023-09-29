@@ -1,0 +1,46 @@
+<table class="table table-bordered" style="color: whitesmoke;">
+    <thead>
+        <tr>
+            <th colspan="3" class="text-center"> Carro de compras </th>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if request.session.car.items %}
+        {% for key,value in request.session.car.items %}
+
+        <tr class="text-center">
+            <td>{{value.name}}</td>
+            <td>{{value.quantity}}</td>
+            <td>
+                <a href="{% url 'car:agregate' value.product_id %}" class="btn btn-success">+</a>
+                <a href="{% url 'car:substract' value.product_id %}" class="btn btn-success">-</a>
+                <br>
+                {{value.price}}
+            </td>
+        </tr>
+
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">
+                <div class="alert alert-danger text-center">Sin Productos</div>
+            </td>
+        </tr>
+        {% endif%}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                Valor total: {{total_cost}} $
+            </td>
+        </tr>
+    </tfoot>
+
+</table>

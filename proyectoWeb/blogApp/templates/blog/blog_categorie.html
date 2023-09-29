@@ -1,0 +1,32 @@
+{% extends "proyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    {% for post in posts %}
+
+    <section class="page-section cta">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-9 mx-auto">
+              <div class="cta-inner text-center rounded">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-lower">{{post.title}}</span>
+                  <span class="section-heading-upper">Creado el: {{post.created}}</span>
+                  <span class="section-heading-upper">Escrito por: {{post.autor}}</span>
+                  <span class="section-heading-upper">categoria: 
+                    {{ post.categories.first.name }}
+                  </span>
+
+                </h2>
+                <p class="mb-0">{{post.content}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+    {% endfor %}
+
+{% endblock %}

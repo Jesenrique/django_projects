@@ -5,12 +5,21 @@
 {% block content %}
 
 {% for servicio in servicios %}
-<p>
-    <h2 style="color: greenyellow"> {{servicio.tittle}}</h2>
-    <p style="color: greenyellow">{{servicio.content}}</p>
-    <img src={{servicio.image.url}} alt="Imagen del envio" width="200" height="200"> 
-    <!-- importante agregar .url de lo contrario no encontrara la url configurada en media-->
-</p>
+
+<section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{servicio.image.url}}" alt="Imagen de {{servicio.tittle}}" style="width: 50%;" >
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-lower">{{servicio.tittle}}</span>
+            <span class="section-heading-upper">{{servicio.content}}</span>
+          </h2>  
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 {% endfor %}
 

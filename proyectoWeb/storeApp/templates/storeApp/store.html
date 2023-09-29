@@ -1,0 +1,38 @@
+{% extends "proyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+  <div style="float: right;">
+
+    {% include "car/widget.html" %}
+
+  </div>
+  <div class="row">
+
+    {% for product in products %}
+    <div class="col-md-4">
+
+      <div class="card" style="margin: 5px 5px;">
+        <img src="{{product.image.url}}" alt="" class="card-img-top">
+        <div class="card-body" style="text-align: center;">
+          <h6 class="card-title">{{product.name}}</h6>
+          <h6 class="card-text">{{product.price}} $</h6>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'car:agregate' product.id %}" class="btn btn-success">+</a>
+          <a href="{% url 'car:substract' product.id %}" class="btn btn-success">-</a>
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "proyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% if 'valid' in request.GET %}
+<p style="background-color: beige;"> Información enviada!</p>
+{% endif %}
+<div class="contenedorContacto">
+    <form action="", method="POST" style="text-align: center;">
+    {% csrf_token %} <!-- agrega campo oculto usado como clave como medida de seguridad-->
+    <table style="color: white; margin: 20px auto;">
+        {{ContactForm}}
+    </table>
+    <input type="submit" value="Enviar" style="border: 5px ;">
+    </form>
+</div>
+
+
+{% endblock %}

@@ -46,7 +46,9 @@
           <li class="nav-item {% if request.path == '/contact/' %} active {% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'contact' %}">Contacto</a>
           </li>
-          <li class="nav-item {% if request.path == '/blog/' %} active {% endif %} px-lg-4">
+          <li class="nav-item {% if request.path|slice:':6' == '/blog/' %} active {% endif %} px-lg-4">
+            <!-- |slice:':6' esto se usa para que a cualquier url que los primero seis caracteres sean /blog/
+            le da el estilo de subrayar el texto en balnco-->
             <a class="nav-link text-uppercase text-expanded" href="{% url 'blog' %}">Blog</a>
           </li>
          

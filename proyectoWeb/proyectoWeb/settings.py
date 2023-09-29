@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'proyectoWebApp',
     'servicesApp',
+    'blogApp',
+    'contactoApp',
+    'storeApp',
+    'carApp',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carApp.context_processor.total_cost',
             ],
         },
     },
@@ -127,3 +132,11 @@ MEDIA_ROOT= BASE_DIR/'media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_HOST_USER="jesusenriquegarciag@gmail.com"
+EMAIL_HOST_PASSWORD="qvvzqnmwsdnblgpw"
+EMAIL_USE_TLS=True
