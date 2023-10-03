@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'contactoApp',
     'storeApp',
     'carApp',
+    'authentification',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +143,6 @@ EMAIL_PORT=587
 EMAIL_HOST_USER="jesusenriquegarciag@gmail.com"
 EMAIL_HOST_PASSWORD="qvvzqnmwsdnblgpw"
 EMAIL_USE_TLS=True
+
+CRISPY_ALLOWED_TEMPLATE_PACK="bootstrap4"
+CRISPY_TEMPLATE_PACK='bootstrap4'

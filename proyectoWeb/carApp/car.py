@@ -13,27 +13,30 @@ class Car:
         #else:
         self.car=car
     
-    def agregate(self, product):
+    def agregate(self, product): 
         #Se evalua si el producto esta en el carro de comprar, si no esta se agrega
         if not str(product.id) in self.car.keys():
             self.car[product.id]={
                 "product_id":product.id,
                 "name":product.name,
-                "price":str(product.price),
+                "price":product.price,
                 "quantity":1,
-                "image":product.image.url
+                "image":product.image.url,
+                "subtotal":product.price
             }
         else:
-            quantity=self.car[product.id]["quantity"]
-            self.car[product.id]["quantity"]=quantity+1
-            """
-            for key, value in self.car.items():
-                if key==str(product.id):
-                    value["quantity"]=value["quantity"]+1
-                
-            """
+            self.car[str(product.id)]["quantity"]+=1
+            self.__subtotal__(product) 
+        
+        """  
+        for key, value in self.car.items():
+            if key==str(product.id):
+                value["quantity"]=value["quantity"]+1
+        """
+            
         #Esto va a actualizar la sesion cada vez que se haga una operacion en el carro
         self.save_car()
+       
     
     def save_car(self):
         self.session["car"]=self.car
@@ -46,15 +49,37 @@ class Car:
         self.save_car()
     
     def substract_product(self,product):
+        if str(product.id) in self.car.keys():
+            quantity=self.car[str(product.id)]["quantity"]
+            if quantity==1:
+                self.eliminate(product)
+            else:
+                self.car[str(product.id)]["quantity"]-=1 
+                self.__subtotal__(product)          
+        else:
+            pass
+
+        
+        ''' 
         for key, value in self.car.items():
             if key==str(product.id):
                 value["quantity"]=value["quantity"]-1
                 if value["quantity"]<=0:
                     self.eliminate(product)
             break
+        '''   
         #Esto va a actualizar la sesion cada vez que se haga una operacion en el carro
         self.save_car()
 
     def clean_car(self):
         self.session["car"]={}
         self.session.modified=True
+
+    def __subtotal__(self,product):
+        quantity=self.car[str(product.id)]["quantity"]
+        self.car[str(product.id)]["subtotal"]=product.price*quantity
+
+    def __total__(self):
+        total=0
+        for product in self.car.values():
+            total=product["subtotal"]+0
