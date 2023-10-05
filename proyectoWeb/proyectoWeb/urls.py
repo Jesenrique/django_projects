@@ -26,7 +26,7 @@ urlpatterns = [
     path('contact/',include('contactoApp.urls')),
     path('store/',include('storeApp.urls')),
     path('car/',include('carApp.urls')),
-    path('login/',include('authentification.urls')),
+    path('auth/',include('authentification.urls')),
 ]
 
 # se agrega a url patterns la url de los archivos estaticos
