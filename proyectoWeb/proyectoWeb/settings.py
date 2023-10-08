@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'authentification',
     'crispy_forms',
     'crispy_bootstrap4',
+    'background_task',
+    'orderApp'
 ]
 
 MIDDLEWARE = [

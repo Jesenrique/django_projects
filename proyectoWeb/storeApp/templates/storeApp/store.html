@@ -8,8 +8,15 @@
 <div class="container">
 
   <div style="float: right;">
+    {% if user.is_authenticated %}
 
-    {% include "car/widget.html" %}
+      {% include "car/widget.html" %}
+
+    {% else %}
+    <div class="alert alert-danger text-center">
+    <span>Ingresa tus datos</span>
+    </div>
+    {% endif %}
 
   </div>
   <div class="row">

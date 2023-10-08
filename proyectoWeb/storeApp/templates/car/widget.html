@@ -37,10 +37,18 @@
 
     <tfoot>
         <tr>
-            <td colspan="3">
+            <td colspan="3" style="text-align: center;">
                 Valor total: {{total_cost}} $
             </td>
         </tr>
+        <!-- verifica que el usuario este logueado para hacer pedido-->
+        {% if request.session.car.items %}
+        <tr>
+            <td colspan="3" style="text-align: center;">
+            <a href="#"  type="button" class="btn btn-success">comprar</a>
+            </td>
+        </tr>
+        {% endif %}
     </tfoot>
 
 </table>

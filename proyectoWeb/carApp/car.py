@@ -10,6 +10,7 @@ class Car:
         if not car:
             car=self.session["car"]={}
         
+        #siempre se crea el carro sin importar si esta autenticado algun usuario
         #else:
         self.car=car
     
